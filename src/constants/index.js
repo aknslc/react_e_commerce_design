@@ -3,7 +3,6 @@ import brandsImage2 from '../assets/defacto.png'
 import brandsImage3 from '../assets/dilvin.png'
 import brandsImage4 from '../assets/jackjones.png'
 import brandsImage5 from '../assets/philips.png'
-import brandsImage6 from '../assets/samsung2.png'
 import brandsImage7 from '../assets/uspolo.png'
 
 
@@ -30,7 +29,7 @@ export const brands = [
     },
     {
         id: "6",
-        img: brandsImage6,
+        img: brandsImage3,
     },
     {
         id: "7",
@@ -54,7 +53,7 @@ export const brands = [
     },
     {
         id: "12",
-        img: brandsImage6,
+        img: brandsImage3,
     },
 ];
 

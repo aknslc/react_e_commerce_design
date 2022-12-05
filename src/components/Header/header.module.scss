@@ -20,54 +20,46 @@ $breakpoints: (
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-
-    .logo {
-
-        a {
-            color: mixin.$primary-color;
-            font-size: 4.5rem !important;
-        }
-    }
-
-
-    .accountNavigationContainer {
+    .headerContent {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        .logo {
+            width: 150px;
+            margin-top: 1rem;
 
-        .accountItem {
+            img {
+                width: 100%;
+            }
+        }
+
+
+        .accountNavigationContainer {
             display: flex;
             align-items: center;
-            margin-left: 3rem;
-            cursor: pointer;
-            position: relative;
 
+            .accountItem {
+                display: flex;
+                align-items: center;
+                margin-left: 3rem;
+                cursor: pointer;
+                position: relative;
 
-            .hamburgerIcon {
-                display: none;
-            
-                @include respond-to('medium') {
-                    display: block;
-                    color: orangered;
+                .accountItemDetail {
+                    font-size: 1.6rem;
+                    margin-left: 5px;
+
+                    @include respond-to('medium') {
+                        display: none;
+                    }
                 }
-                
+
+
             }
-
-            .accountItemDetail {
-                font-size: 1.6rem;
-                margin-left: 5px;
-
-                @include respond-to('medium') {
-                    display: none;
-                }
-            }
-
-            
         }
     }
+
 
 
 }

@@ -1,19 +1,20 @@
 import DropDown from './DropDown'
 import styles from './navbar.module.scss'
 
-import { BiDownArrow } from 'react-icons/bi'
+import { RiArrowDownSLine } from 'react-icons/ri'
 
-const Navbar = ({ openMenu }) => {
+const Navbar = () => {
 
   return (
     <>
-      {openMenu && (
-        <nav>
+
+      <nav>
+        <div className="container">
           <ul className={styles.mainNav}>
             <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
               <a className={styles.mainNavLink} href="#!">
                 Computers
-                <BiDownArrow size={13} />
+                <RiArrowDownSLine size={13} />
               </a>
               <DropDown />
             </li>
@@ -23,7 +24,7 @@ const Navbar = ({ openMenu }) => {
             <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
               <a className={styles.mainNavLink} href="#!">
                 Smart Home
-                <BiDownArrow size={13} />
+                <RiArrowDownSLine size={13} />
               </a>
               <DropDown />
             </li>
@@ -36,15 +37,16 @@ const Navbar = ({ openMenu }) => {
             <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
               <a className={styles.mainNavLink} href="#!">
                 Baby
-                <BiDownArrow size={13} />
+                <RiArrowDownSLine size={13} />
               </a>
               <DropDown />
             </li>
 
           </ul>
-        </nav>
+        </div>
+      </nav>
 
-      )}
+
     </>
   )
 }

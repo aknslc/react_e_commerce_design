@@ -19,8 +19,8 @@ const Product = ({ product }) => {
             </div>
 
             <div className={styles.buttons}>
-                <AiOutlineHeart size={30} className={styles.buttonsItem} />
-                <AiOutlineShoppingCart size={30} className={styles.buttonsItem} />
+                <AiOutlineHeart size={25} className={styles.buttonsItem} />
+                <AiOutlineShoppingCart size={25} className={styles.buttonsItem} />
             </div>
 
         </div>

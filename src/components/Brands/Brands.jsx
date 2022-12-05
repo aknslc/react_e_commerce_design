@@ -41,15 +41,17 @@ const Brands = () => {
     return (
         <section className={styles.brands}>
 
-            <Slider {...settings}>
+            <div className="container">
+                <Slider {...settings}>
 
-                {brands.map(brand => (
-                    <div key={brand.id} className={styles.brandsItem}>
-                        <img src={brand.img} alt={brand.id} />
-                    </div>
-                ))}
+                    {brands.map(brand => (
+                        <div key={brand.id} className={styles.brandsItem}>
+                            <img src={brand.img} alt={brand.id} />
+                        </div>
+                    ))}
 
-            </Slider>
+                </Slider>
+            </div>
 
         </section>
     )

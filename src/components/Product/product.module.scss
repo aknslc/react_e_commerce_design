@@ -1,7 +1,7 @@
 @use "../../index.scss" as mixin;
 
 .productCard {
-    border: 1px solid rgb(207, 207, 207);
+    border: .5px solid rgb(234, 234, 234);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     margin: 2rem 5px;
@@ -52,14 +52,14 @@
         padding: 1rem 0;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-top: 1px solid rgb(219, 219, 219);
+        border-top: 1px solid rgb(234, 234, 234);
 
         .buttonsItem {
             color: mixin.$primary-color;
-            transition: opacity .10s ease-in-out;
+            transition: color .10s ease-in-out;
 
             &:hover {
-                color: red;
+                color: mixin.$secondary-color;
                 cursor: pointer;
             }
         }
