@@ -1,0 +1,23 @@
+@use "../../index.scss" as mixin;
+
+
+
+.products {
+    margin: 7rem 0;
+
+    .sectionTitle {
+        color: rgb(124, 124, 124);
+        font-size: 2.5rem;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+
+    .arrows {
+        color: rgb(165, 165, 165);
+        font-size: 3rem;
+    }
+
+
+}

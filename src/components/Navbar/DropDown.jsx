@@ -1,6 +1,6 @@
 import styles from './navbar.module.scss'
 
-import image2 from '../../assets/2.jpg'
+import image1 from '../../assets/promo2.webp'
 
 const DropDown = () => {
     return (
@@ -105,18 +105,18 @@ const DropDown = () => {
                     <div className="row">
                         <div className="col-6">
                             <div className={styles.dropDownItemImage}>
-                                <img src={image2} alt="" />
+                                <img src={image1} alt="" />
                             </div>
                             <div className={styles.dropDownItemImage}>
-                                <img src={image2} alt="" />
+                                <img src={image1} alt="" />
                             </div>
                         </div>
                         <div className="col-6">
                             <div className={styles.dropDownItemImage}>
-                                <img src={image2} alt="" />
+                                <img src={image1} alt="" />
                             </div>
                             <div className={styles.dropDownItemImage}>
-                                <img src={image2} alt="" />
+                                <img src={image1} alt="" />
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,6 @@ const Header = ({ openMenu, setOpenMenu }) => {
 
                 <div className={styles.accountItem}>
                     <GiHamburgerMenu onClick={handleMenuIcon} className={styles.hamburgerIcon} size={25} />
-
                 </div>
             </div>
         </header>
