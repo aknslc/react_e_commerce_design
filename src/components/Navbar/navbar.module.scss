@@ -1,0 +1,111 @@
+@use "../../index.scss" as mixin;
+
+// breakpoints for responsive
+$breakpoints: (
+    'xsmall': 576px,
+    'small': 767px,
+    'medium': 992px,
+    'large': 1200px) !default;
+
+@mixin respond-to($breakpoint) {
+
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Prints a media query based on the value
+        @media (max-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+}
+
+nav {
+    transition: all 2s ease-in;
+
+    .mainNav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem !important;
+        margin-top: 1rem;
+        position: relative;
+
+
+        @include respond-to('medium') {
+            flex-direction: column;
+            margin: 0;
+            padding: 0 !important;
+            background-color: rgb(238, 238, 238
+            );
+    }
+
+    .mainNavItem {
+        padding: 1rem;
+
+        .mainNavLink {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem !important;
+            text-transform: uppercase;
+            font-weight: 600;
+
+
+            &:hover {
+                opacity: .5;
+            }
+        }
+
+
+        .dropDownMenu {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            color: mixin.$white;
+            padding: 2rem !important;
+            border: 1px solid mixin.$primary-color;
+            display: none;
+
+            .dropDownItem {
+                h3 {
+                    color: mixin.$primary-color;
+                    margin-top: 1rem;
+                    font-size: 2.5rem;
+                }
+
+                .dropDownLink {
+                    color: mixin.$secondary-color !important;
+                    font-size: 1.6rem !important;
+
+
+                    &:hover {
+                        color: mixin.$primary-color !important;
+                    }
+                }
+
+                .dropDownItemImage {
+                    width: 100%;
+
+                    img {
+                        width: 100% !important;
+                        margin: 1rem 0;
+                        height: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    .dropdownLi {
+        &:hover .dropDownMenu {
+            display: block;
+
+            @include respond-to('medium') {
+                display: none;
+            }
+        }
+    }
+
+}
+}

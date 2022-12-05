@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
+
+
+// variables
+$primary-color : #002046;
+$secondary-color : rgba(101, 101, 101, 0.867
+);
+$white : #fff;
+$primary-font : 'Source Sans Pro',
+sans-serif;
+
+html {
+  font-size: 10px !important;
+}
+
+body {
+  font-family: $primary-font !important;
+}
+
+
+p {
+  font-size: 1.8rem !important;
+}
+
+a {
+  text-decoration: none !important;
+  font-size: 1.8rem !important;
+  color: $primary-color !important;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 !important;
+}
