@@ -1,6 +1,6 @@
 import DropDown from './DropDown'
 import styles from './navbar.module.scss'
-
+import { navLinks } from '../../constants/index'
 import { RiArrowDownSLine } from 'react-icons/ri'
 
 const Navbar = () => {
@@ -11,37 +11,19 @@ const Navbar = () => {
       <nav>
         <div className="container">
           <ul className={styles.mainNav}>
-            <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
-              <a className={styles.mainNavLink} href="#!">
-                Computers
-                <RiArrowDownSLine size={13} />
-              </a>
-              <DropDown />
-            </li>
-            <li className={styles.mainNavItem}>
-              <a className={styles.mainNavLink} href="#!">Electronics</a>
-            </li>
-            <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
-              <a className={styles.mainNavLink} href="#!">
-                Smart Home
-                <RiArrowDownSLine size={13} />
-              </a>
-              <DropDown />
-            </li>
-            <li className={styles.mainNavItem}>
-              <a className={styles.mainNavLink} href="#!">Arts & Crafts</a>
-            </li>
-            <li className={styles.mainNavItem}>
-              <a className={styles.mainNavLink} href="#!">Automotive</a>
-            </li>
-            <li className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
-              <a className={styles.mainNavLink} href="#!">
-                Baby
-                <RiArrowDownSLine size={13} />
-              </a>
-              <DropDown />
-            </li>
-
+            {navLinks.map(link => (
+              <li key={link.id} className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
+                <a className={styles.mainNavLink} href="#!">
+                  {link.title}
+                  {link.id === 1 && <RiArrowDownSLine size={13} />}
+                  {link.id === 3 && <RiArrowDownSLine size={13} />}
+                  {link.id === 5 && <RiArrowDownSLine size={13} />}
+                </a>
+                {link.id === 1 && <DropDown />}
+                {link.id === 3 && <DropDown />}
+                {link.id === 5 && <DropDown />}
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

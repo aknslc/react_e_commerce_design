@@ -11,7 +11,7 @@ const Products = () => {
                 </div>
                 <div className="row">
                     {featuredproducts.map((product) => (
-                        <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div key={product.id} className="col-lg-3 col-md-6 col-sm-12">
                             <Product product={product} />
                         </div>
                     ))}

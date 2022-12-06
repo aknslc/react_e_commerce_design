@@ -1,16 +1,12 @@
 import styles from './footer.module.scss'
 import { SlSocialFacebook, SlSocialInstagram, SlSocialLinkedin } from 'react-icons/sl'
-import logo from '../../assets/logo.webp'
 const Footer = () => {
     return (
         <footer>
             <div className="container">
-                <div className="row align-items-center">
+                <div className="row align-items-start">
                     <div className="col-lg-4 col-md-6 col-sm-12">
                         <div className={styles.footerItem}>
-                            <div className={styles.logo}>
-                                <img src={logo} alt="" />
-                            </div>
                             <h5 className={styles.footerContentTitle}>Quick Links</h5>
                             <div className={styles.footerContentLink}>
                                 <a href="#!">Gift Cards</a>
@@ -71,7 +67,7 @@ const Footer = () => {
                 </div>
 
 
-                <p className={styles.footerDesc}>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                <p className={styles.footerDesc}>aknselc1112@gmail.com</p>
             </div>
         </footer>
     )

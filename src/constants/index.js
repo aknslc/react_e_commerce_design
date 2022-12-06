@@ -108,3 +108,30 @@ export const featuredproducts = [
         }
     },
 ]
+
+export const navLinks= [
+    {
+        id: 1 ,
+        title:"Men's Fashion"
+    },
+    {
+        id: 2 ,
+        title:"Women's Fashion"
+    },
+    {
+        id: 3 ,
+        title:"Toys & Games"
+    },
+    {
+        id: 4 ,
+        title:"Home & Kitchen"
+    },
+    {
+        id: 5 ,
+        title:"Boy's Fashion"
+    },
+    {
+        id: 6 ,
+        title:"Girl's Fashion"
+    }
+]
