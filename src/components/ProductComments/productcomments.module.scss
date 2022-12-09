@@ -6,45 +6,48 @@
 
     .commentsArea {
         margin: 10rem 0;
-        .item {
 
-            .inputDiv {
-                position: relative;
-                textarea {
-                    border: 1px solid mixin.$light-gray;
-                    width: 100%;
-                    border-radius: .5rem;
-                    padding: 2rem;
-                    outline: none;
-                    font-size: 1.7rem;
-                    display: block;
-                }
 
-                button {
-                    font-size: 1.5rem;
-                    border: 1px solid mixin.$light-gray;
-                    border-radius: 5px;
-                    color: mixin.$primary-color;
-                    padding: .5rem;
-                    margin: 1rem 0;
-                    background-color: transparent;
-                }
+        .inputDiv {
+            position: relative;
+
+            textarea {
+                border: 1px solid mixin.$light-gray;
+                width: 100%;
+                border-radius: .5rem;
+                padding: 2rem;
+                outline: none;
+                font-size: 1.7rem;
+                display: block;
             }
 
+            button {
+                font-size: 1.5rem;
+                border: 1px solid mixin.$light-gray;
+                border-radius: 5px;
+                color: gray;
+                padding: .5rem;
+                margin: 1rem 0;
+                background-color: transparent;
+            }
         }
+
+
     }
 
 
     .userComments {
         height: 500px;
         overflow: auto;
+
         .commentsItem {
             position: relative;
             border: 1px solid mixin.$light-gray;
-            padding: 3rem;
+            padding: 2rem;
             margin: 5rem 0;
+
             .commentsContent {
-                font-size: 1.7rem;
+                font-size: 1.5rem;
                 font-weight: 100;
                 color: gray;
                 padding: 2rem 0;
@@ -53,20 +56,20 @@
             .commentsAuthor {
                 position: absolute;
                 top: 1rem;
+                left: 2rem;
                 display: flex;
                 align-items: center;
                 gap: .5rem;
-                font-size: 1.7rem;
+                font-size: 1.2rem;
                 margin: 0 !important;
                 color: gray;
-                left: 3rem;
-                
+
             }
 
             .commentsDate {
                 position: absolute;
-                bottom: 25px;
-                right: 25px;
+                bottom: 15px;
+                right: 15px;
                 font-size: 1.2rem;
                 opacity: .7;
             }

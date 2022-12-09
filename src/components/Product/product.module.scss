@@ -21,7 +21,7 @@
         }
 
         .title {
-            font-size: 2rem;
+            font-size: 1.7rem;
             letter-spacing: 1px;
             font-weight: 500;
         }
@@ -62,6 +62,11 @@
                 color: mixin.$secondary-color;
                 cursor: pointer;
             }
+        }
+
+        .buttonsItemHeart{
+            transition: color .10s ease-in-out;
+            color: red;
         }
     }
 

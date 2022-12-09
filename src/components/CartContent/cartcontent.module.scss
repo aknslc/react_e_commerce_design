@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    
 
     h1 {
         font-size: 3rem;
@@ -16,6 +16,16 @@
     .leftContainer {
         height: 400px;
         overflow: auto;
+        border-bottom: 5px solid mixin.$light-gray;
+        position: relative;
+
+        .emptyCartContainer{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+            color: mixin.$light-gray;
+        }
 
         .cartItems {
             display: flex;
@@ -25,20 +35,25 @@
             border-bottom: 1px solid mixin.$light-gray;
 
             img {
-                width: 100%;
+                width: 100px;
                 height: 100px;
-                object-fit: contain;
+                object-fit: fill;
             }
 
-            h3 {
-                font-size: 1.7rem;
+            .productInfo {
+        
                 margin-left: 1rem;
+                h3 {
+                    font-size: 1.4rem;
+                }
+
+                p {
+                    font-size: 1.5rem !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
             }
 
-            p {
-                font-size: 1.5rem !important;
-                margin-left: 1rem;
-            }
 
             .quantity {
                 button {

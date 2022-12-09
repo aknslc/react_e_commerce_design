@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from '../../assets/logo.webp'
 import MobileMenu from '../MobileMenu/MobileMenu'
+import { useCart } from '../../context/CartContext'
 const Header = () => {
+
+    const {cart} = useCart();
+
 
     return (
         <header>
@@ -36,7 +40,7 @@ const Header = () => {
                                 <AiOutlineShoppingCart size={18} />
                             </Link>
                             <Link to="/cart" className={styles.accountItemDetail}>
-                                Cart(0)
+                                Cart({cart.length})
                             </Link>
                         </div>
                     </div>

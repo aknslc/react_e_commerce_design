@@ -1,7 +1,9 @@
 import styles from './cartcontent.module.scss'
-import img from '../../assets/bershka.png'
 import { RiDeleteBinLine } from 'react-icons/ri'
+import { useCart } from '../../context/CartContext'
+import { Link } from 'react-router-dom'
 const CartContent = () => {
+    const { cart, total, increase, decrease,removeItem } = useCart();
     return (
         <div className={styles.cartContent}>
 
@@ -10,42 +12,46 @@ const CartContent = () => {
                 <div className="row align-items-center">
                     <div className='col-lg-8'>
                         <div className={styles.leftContainer}>
-                            <div className={styles.cartItems}>
-                                <div className="d-flex align-items-center">
-                                    <img src={img} alt="" />
+                            {cart.length === 0 ?
+                                (
+                                    <div className={styles.emptyCartContainer} >
+                                        <p>Cart is Empty</p>
+                                        <Link className='btn btn-success text-white my-5' to="/">Go Products</Link>
+                                    </div>
+                                )
+                                :
+                                (
+                                    <>
+                                        {cart.map(product => (
+                                            <div key={product.id} className={styles.cartItems}>
+                                                <div className="d-flex align-items-center w-full">
+                                                    <img src={product.image} alt="" />
 
-                                    <h3>Product Title</h3>
-                                </div>
-                                <p>$ 15</p>
-                                <div className={styles.quantity}>
-                                    <button>-</button>
-                                    <span>1</span>
-                                    <button>+</button>
-                                </div>
-                                <RiDeleteBinLine size={20} style={{ color: "red" }} />
+                                                    <div className={styles.productInfo}>
+                                                        <h3>{product.title.substring(0, 15)}</h3>
+                                                        <p>${product.price}</p>
+                                                    </div>
 
-                            </div>
-                            <div className={styles.cartItems}>
-                                <div className="d-flex align-items-center">
-                                    <img src={img} alt="" />
+                                                </div>
 
-                                    <h3>Product Title</h3>
-                                </div>
-                                <p>$ 15</p>
-                                <div className={styles.quantity}>
-                                    <button>-</button>
-                                    <span>1</span>
-                                    <button>+</button>
-                                </div>
-                                <RiDeleteBinLine size={20} style={{ color: "red" }} />
 
-                            </div>
+                                                <div className={styles.quantity}>
+                                                    <button onClick={()=> decrease(product)}>-</button>
+                                                    <span>{product.amount}</span>
+                                                    <button onClick={()=> increase(product)}>+</button>
+                                                </div>
+                                                <RiDeleteBinLine onClick={()=> removeItem(product)} size={20} style={{ color: "red", cursor:"pointer" }} />
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+
                         </div>
                     </div>
                     <div className='col-lg-4'>
                         <div className={styles.totalArea}>
                             <div className={styles.totalContent}>
-                                <p>Total: $ 0</p>
+                                <p>Total: $ {total}</p>
                                 <div>
                                     <button className='btn btn-success btn-lg'>Order</button>
                                 </div>
@@ -55,7 +61,7 @@ const CartContent = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 
