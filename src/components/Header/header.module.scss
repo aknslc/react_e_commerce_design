@@ -45,7 +45,6 @@ header {
                 align-items: center;
                 margin-left: 3rem;
                 cursor: pointer;
-                position: relative;
 
                 .accountItemDetail {
                     font-size: 1.6rem;
@@ -54,6 +53,8 @@ header {
                     @include respond-to('medium') {
                         display: none;
                     }
+
+                
                 }
 
 

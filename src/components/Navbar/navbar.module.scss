@@ -106,7 +106,6 @@ nav {
                 @include respond-to('medium') {
                     visibility: hidden;
                     opacity: 0;
-
                 }
             }
         }

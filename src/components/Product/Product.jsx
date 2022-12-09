@@ -1,22 +1,21 @@
 import styles from './product.module.scss'
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 const Product = ({ product }) => {
+
     return (
         <div className={styles.productCard}>
 
-            <div className={styles.productDetails}>
+            <Link to={`/products/${product.id}`} className={styles.productDetails}>
                 <img src={product.image} alt={product.title} />
 
                 <div className={styles.title}>
                     {product.title.substring(0, 25)}
                 </div>
-                <div className={styles.description}>
-                    {product.description.substring(0, 30)}
-                </div>
                 <div className={styles.price}>
                     $ {product.price}
                 </div>
-            </div>
+            </Link>
 
             <div className={styles.buttons}>
                 <AiOutlineHeart size={25} className={styles.buttonsItem} />

@@ -15,13 +15,13 @@ const Navbar = () => {
               <li key={link.id} className={`${styles.mainNavItem} ${styles.dropdownLi}`}>
                 <a className={styles.mainNavLink} href="#!">
                   {link.title}
-                  {link.id === 1 && <RiArrowDownSLine size={13} />}
-                  {link.id === 3 && <RiArrowDownSLine size={13} />}
-                  {link.id === 5 && <RiArrowDownSLine size={13} />}
+                  {link.id === "1" && <RiArrowDownSLine size={13} />}
+                  {link.id === "3" && <RiArrowDownSLine size={13} />}
+                  {link.id === "5" && <RiArrowDownSLine size={13} />}
                 </a>
-                {link.id === 1 && <DropDown />}
-                {link.id === 3 && <DropDown />}
-                {link.id === 5 && <DropDown />}
+                {link.id === "1" && <DropDown />}
+                {link.id === "3" && <DropDown />}
+                {link.id === "5" && <DropDown />}
               </li>
             ))}
           </ul>

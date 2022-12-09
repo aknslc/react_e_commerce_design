@@ -1,0 +1,85 @@
+@use "../../index.scss" as mixin;
+
+
+.cartContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    h1 {
+        font-size: 3rem;
+        color: mixin.$primary-color;
+        margin-bottom: 3rem;
+    }
+
+    .leftContainer {
+        height: 400px;
+        overflow: auto;
+
+        .cartItems {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid mixin.$light-gray;
+
+            img {
+                width: 100%;
+                height: 100px;
+                object-fit: contain;
+            }
+
+            h3 {
+                font-size: 1.7rem;
+                margin-left: 1rem;
+            }
+
+            p {
+                font-size: 1.5rem !important;
+                margin-left: 1rem;
+            }
+
+            .quantity {
+                button {
+                    border: none;
+                    margin: 0 1rem;
+                    padding: .5rem 1rem;
+                    font-size: 1.7rem;
+                }
+
+                span {
+                    font-size: 1.7rem;
+                }
+            }
+        }
+    }
+
+
+
+    .totalArea {
+        height: 400px;
+        position: relative;
+        padding: 1rem;
+
+
+
+        .totalContent {
+            p {
+                position: absolute;
+                bottom: 10rem;
+                right: 25px;
+            }
+
+            button {
+                position: absolute;
+                bottom: 20px;
+                right: 0px;
+                width: 100%;
+                padding: 1rem 0;
+            }
+        }
+
+
+    }
+}

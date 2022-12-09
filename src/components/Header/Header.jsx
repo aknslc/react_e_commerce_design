@@ -1,46 +1,43 @@
 import styles from './header.module.scss'
 import { HiOutlineUser } from 'react-icons/hi'
-import { GiHamburgerMenu } from 'react-icons/gi'
+import { Link } from 'react-router-dom'
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from '../../assets/logo.webp'
 import MobileMenu from '../MobileMenu/MobileMenu'
 const Header = () => {
-
 
     return (
         <header>
             <div className="container">
                 <div className={styles.headerContent}>
                     <MobileMenu />
-                    <div className={styles.logo}>
+                    <Link to="/" className={styles.logo}>
                         <img src={logo} alt="logo" />
-                    </div>
-
+                    </Link>
                     <div className={styles.accountNavigationContainer}>
                         <div className={styles.accountItem}>
-                            <div>
+                            <Link to="/login">
                                 <HiOutlineUser size={18} />
-                            </div>
-                            <div className={styles.accountItemDetail}>
+                            </Link>
+                            <Link to="/login" className={`${styles.accountItemDetail} ${styles.loginContainer}`}>
                                 Login
-                            </div>
-
+                            </Link>
                         </div>
                         <div className={styles.accountItem}>
-                            <div className='accountItemIcon'>
+                            <Link to="/favorites" className='accountItemIcon'>
                                 <AiOutlineHeart size={18} />
-                            </div>
-                            <div className={styles.accountItemDetail}>
-                                Wishlist
-                            </div>
+                            </Link>
+                            <Link to="/favorites" className={styles.accountItemDetail}>
+                                Favorites
+                            </Link>
                         </div>
                         <div className={styles.accountItem}>
-                            <div>
+                            <Link to="/cart">
                                 <AiOutlineShoppingCart size={18} />
-                            </div>
-                            <div className={styles.accountItemDetail}>
-                                Cart
-                            </div>
+                            </Link>
+                            <Link to="/cart" className={styles.accountItemDetail}>
+                                Cart(0)
+                            </Link>
                         </div>
                     </div>
                 </div>
