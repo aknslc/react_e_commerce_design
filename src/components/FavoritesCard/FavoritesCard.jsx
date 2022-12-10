@@ -1,5 +1,6 @@
 import styles from './favoritescard.module.scss'
 import { AiOutlineHeart } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 import { useFavorite } from '../../context/FavoriteContext'
 
 const FavoritesCard = ({ product }) => {
@@ -10,13 +11,15 @@ const FavoritesCard = ({ product }) => {
 
     return (
         <div className={styles.favoritesItem}>
-            <img src={product.image} className="w-full" alt="" />
-            <h2>{product.title.substring(0,10)}</h2>
-            <p>{product.description}</p>
-            <p>$ {product.price}</p>
+            <Link to={`/products/${product.id}`}>
+                <img src={product.image} className="w-full" alt="" />
+                <h2>{product.title.substring(0, 10)}</h2>
+                <p>{product.description}</p>
+                <p>$ {product.price}</p>
+            </Link>
 
             <div className={styles.heartIconContainer}>
-                <AiOutlineHeart onClick={()=> addToFavorite(product)} size={25} className={checkFavorite && styles.heartIcon} />
+                <AiOutlineHeart onClick={() => addToFavorite(product)} size={25} className={checkFavorite && styles.heartIcon} />
             </div>
         </div>
 

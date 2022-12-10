@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 
 const CartContext = createContext();
@@ -7,13 +7,12 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
 
-    const addToCart = (product) => {
+ 
+    // add to cart
+    const addToCart = (product, cb) => {
         const checkCart = cart.find(item => item.id === product.id);
         // Product already added
         if (checkCart) {
-            // checkCart.amount += 1;
-            // setCart([...cart.filter(item => item.id !== product.id), checkCart]);
-
             alert("product already added")
         } else {
             setCart([...cart, {
@@ -23,19 +22,17 @@ const CartProvider = ({ children }) => {
                 price: product.price,
                 image: product.image
             }]);
-
+            cb();
             setTotal((prev) => prev + product.price)
-
         }
-
-
     }
 
-
-    const removeItem = (product) => {
+    const removeItem = (product, cb) => {
         const checkCart = cart.find(item => item.id === product.id);
         setCart([...cart.filter(item => item.id !== product.id)])
         setTotal(prev => prev -= (checkCart.price * checkCart.amount))
+
+        cb()
     }
 
     const increase = (product) => {
@@ -66,7 +63,7 @@ const CartProvider = ({ children }) => {
         setTotal,
         increase,
         decrease,
-        removeItem
+        removeItem,
     };
 
 
