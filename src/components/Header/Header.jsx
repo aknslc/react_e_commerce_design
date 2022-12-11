@@ -2,12 +2,11 @@ import styles from './header.module.scss'
 import { HiOutlineUser } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
-import logo from '../../assets/logo.webp'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import { useCart } from '../../context/CartContext'
 const Header = () => {
 
-    const {cart} = useCart();
+    const { cart } = useCart();
 
 
     return (
@@ -16,7 +15,7 @@ const Header = () => {
                 <div className={styles.headerContent}>
                     <MobileMenu />
                     <Link to="/" className={styles.logo}>
-                        <img src={logo} alt="logo" />
+                        <span>LOGO</span>
                     </Link>
                     <div className={styles.accountNavigationContainer}>
                         <div className={styles.accountItem}>

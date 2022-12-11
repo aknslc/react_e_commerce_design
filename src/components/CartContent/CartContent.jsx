@@ -4,31 +4,8 @@ import { RiDeleteBinLine } from 'react-icons/ri'
 import { useCart } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 
-
-import Stack from '@mui/material/Stack';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 const CartContent = () => {
-    const { cart, total, increase, decrease, removeItem } = useCart();
-
-    // snackbar
-    const [open, setOpen] = React.useState(false);
-
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
-    };
+    const { cart, total, increase, decrease, confirmAlertFunc } = useCart();
 
     return (
         <div className={styles.cartContent}>
@@ -50,7 +27,7 @@ const CartContent = () => {
                                     <>
                                         {cart.map(product => (
                                             <div key={product.id} className={styles.cartItems}>
-                                                <div className="d-flex align-items-center" style={{width:"250px"}}>
+                                                <div className="d-flex align-items-center" style={{ width: "250px" }}>
                                                     <div>
                                                         <img src={product.image} alt="" />
                                                     </div>
@@ -61,11 +38,9 @@ const CartContent = () => {
                                                     </div>
 
                                                 </div>
-
-
                                                 <div className={styles.quantity}>
                                                     <div>
-                                                        <button onClick={() => decrease(product)}>-</button>
+                                                        <button disabled={product.amount === 1} onClick={() => decrease(product)}>-</button>
                                                     </div>
                                                     <div>
                                                         <span>{product.amount}</span>
@@ -74,7 +49,7 @@ const CartContent = () => {
                                                         <button onClick={() => increase(product)}>+</button>
                                                     </div>
                                                 </div>
-                                                <RiDeleteBinLine onClick={() => removeItem(product, () => handleClick())} size={20} style={{ color: "red", cursor: "pointer" }} />
+                                                <RiDeleteBinLine onClick={() => confirmAlertFunc(product)} size={20} style={{ color: "red", cursor: "pointer" }} />
                                             </div>
                                         ))}
                                     </>
@@ -87,18 +62,10 @@ const CartContent = () => {
                             <div className={styles.totalContent}>
                                 <p>Total: $ {total}</p>
                                 <div>
-                                    <button className='btn btn-success btn-lg'>Order</button>
+                                    <button disabled={cart.length === 0} className='btn btn-success btn-lg'>Order</button>
                                 </div>
                             </div>
                         </div>
-
-                        <Stack spacing={2} sx={{ width: '100%' }}>
-                            <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
-                                <Alert onClose={handleClose} severity="error" sx={{ width: '100%', fontSize: "15px" }}>
-                                    Removed Item!
-                                </Alert>
-                            </Snackbar>
-                        </Stack>
                     </div>
                 </div>
             </div>

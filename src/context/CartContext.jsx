@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// confirm alert
+import { confirmAlert } from 'react-confirm-alert';
 
 const CartContext = createContext();
 
@@ -7,7 +9,32 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
 
- 
+
+    // confirm alert func
+    const confirmAlertFunc = (product) => {
+        
+        confirmAlert({
+            
+            customUI: ({onClose}) => {
+                return (
+                    <div className='confirm-custom-ui'>
+                        <h1>Are you sure?</h1>
+                        <p>You want to delete this product?</p>
+                        <button className="btn btn-outline-secondary btn-lg" onClick={onClose}>No</button>
+                        <button className="btn btn-danger btn-lg mx-2"
+                            onClick={() => {
+                                removeItem(product)
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                        </button>
+                    </div>
+                )
+            }
+        });
+    };
+
     // add to cart
     const addToCart = (product, cb) => {
         const checkCart = cart.find(item => item.id === product.id);
@@ -27,12 +54,11 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const removeItem = (product, cb) => {
+    const removeItem = (product) => {
         const checkCart = cart.find(item => item.id === product.id);
         setCart([...cart.filter(item => item.id !== product.id)])
         setTotal(prev => prev -= (checkCart.price * checkCart.amount))
 
-        cb()
     }
 
     const increase = (product) => {
@@ -46,7 +72,6 @@ const CartProvider = ({ children }) => {
             checkCart.amount -= 1
             setTotal(prev => prev -= checkCart.price)
         } else {
-            removeItem(product);
         }
     }
 
@@ -64,6 +89,7 @@ const CartProvider = ({ children }) => {
         increase,
         decrease,
         removeItem,
+        confirmAlertFunc
     };
 
 

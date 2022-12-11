@@ -10,7 +10,7 @@ const FavoritesContent = () => {
                 <div className={styles.favoritesItems}>
                     <div className="row">
                         {favorite.map(product => (
-                            <div className="col-lg-3">
+                            <div key={product.id} className="col-lg-3">
                                 <FavoritesCard product={product} />
                             </div>
                         ))}
