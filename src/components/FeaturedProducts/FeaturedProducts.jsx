@@ -1,8 +1,9 @@
 import styles from './products.module.scss'
 import { featuredproducts } from '../../constants/index'
 import Product from '../Product/Product'
+import { Link } from 'react-router-dom';
 
-const Products = () => {
+const FeaturedProducts = () => {
     return (
         <section className={styles.products}>
             <div className="container">
@@ -16,9 +17,13 @@ const Products = () => {
                         </div>
                     ))}
                 </div>
+
+                <div className='text-center'>
+                    <Link to={"/products"} className={styles.allProductsBtn}>All Products</Link>
+                </div>
             </div>
         </section>
     );
 };
 
-export default Products
+export default FeaturedProducts

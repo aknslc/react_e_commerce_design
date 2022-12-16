@@ -38,8 +38,6 @@ const ProductComments = () => {
 
         <h1>Comments</h1>
         <div className={styles.userComments}>
-
-
           <div className={styles.commentsItem}>
             <div className={styles.commentsContent}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo debitis est provident iusto facilis distinctio, esse harum? Ducimus et quam perspiciatis aspernatur ipsam cumque culpa.
@@ -76,9 +74,10 @@ const ProductComments = () => {
               20/04/2020
             </div>
           </div>
-          
 
-
+          <div className='text-center'>
+            <button className='btn btn-outline-secondary btn-lg'>Load More Comments</button>
+          </div>
         </div>
       </div>
     </div>

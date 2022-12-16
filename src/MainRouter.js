@@ -8,6 +8,7 @@ import Register from './pages/Auth/Register/Register'
 import SingleProduct from './pages/ProductDetail/ProductDetail'
 import Cart from './pages/Cart/Cart'
 import Favorites from './pages/Favorites/Favorites'
+import ProductsPage from './pages/ProductsPage/ProductsPage'
 
 
 const MainRouter = () => {
@@ -17,6 +18,7 @@ const MainRouter = () => {
             <Route path='/' element={<Home />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/favorites' element={<Favorites />} />
+            <Route path='/products' element={<ProductsPage />} />
             <Route path='/products/:id' element={<SingleProduct />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
