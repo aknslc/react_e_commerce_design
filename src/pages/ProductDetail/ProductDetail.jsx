@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
-import { featuredproducts } from '../../constants'
 
+import useFetch from '../../hooks/useFetch'
 // components
 import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
@@ -9,9 +9,11 @@ import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts
 import ProductDetailContent from '../../components/ProductDetailContent/ProductDetailContent'
 import ProductComments from '../../components/ProductComments/ProductComments'
 const ProductDetail = () => {
+  
   const { id } = useParams()
+  const {data, loading} = useFetch(`/products/${id}`);
 
-  const product = featuredproducts.filter(item => item.id === id)[0];
+  const product = data;
 
   return (
     <>

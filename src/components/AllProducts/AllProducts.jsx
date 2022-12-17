@@ -1,13 +1,18 @@
+import { useEffect } from 'react'
 import Product from '../Product/Product'
 import styles from './allproducts.module.scss'
-import { featuredproducts } from '../../constants/index'
+import useFetch from '../../hooks/useFetch'
+
 const AllProducts = () => {
+
+    const {data, loading, error} = useFetch('/products');
+
     return (
         <div className={styles.allProducts}>
             <div className="container">
                 <div className="row">
-                    {featuredproducts.map((product) => (
-                        <div key={product.id} className="col-lg-3">
+                    {data.map((product) => (
+                        <div key={product._id} className="col-lg-3 col-md-6 col-sm-12">
                             <Product product={product} />
                         </div>
                     ))}

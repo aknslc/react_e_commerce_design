@@ -11,9 +11,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const ProductDetailContent = ({ product }) => {
     const { addToCart } = useCart();
 
-
-
-
     // snackbar
     const [open, setOpen] = React.useState(false);
 
@@ -36,7 +33,7 @@ const ProductDetailContent = ({ product }) => {
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-12">
                         <div className={styles.imageContainer}>
-                            <img src={product.image} alt="" />
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-12">

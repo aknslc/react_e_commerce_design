@@ -1,21 +1,34 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import styles from './login.module.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext'
+import axios from 'axios';
 const Login = () => {
+  const { user, setUser } = useAuth()
+  const [errorMessage, setErrorMessage] = useState('')
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
-    onSubmit: values => {
-      console.log(values)
+    onSubmit: async values => {
+      try {
+        const res = await axios.post("/auth/login", values);
+        localStorage.setItem('user', JSON.stringify(res.data))
+        setUser(res.data)
+        navigate('/')
+      } catch (err) {
+        setErrorMessage(err.response.data.message)
+      }
     },
   });
   return (
     <div className={styles.formContainer}>
       <form onSubmit={formik.handleSubmit}>
         <h1 className={styles.formTitle}>Login</h1>
-
+        <p className='text-danger'>{errorMessage}</p>
         <input
           id="email"
           name="email"
@@ -34,7 +47,7 @@ const Login = () => {
         />
         <button className={styles.submitBtn} type="submit">Login</button>
 
-        <Link style={{fontWeight:"100", marginTop:"2rem"}} to="/register">
+        <Link style={{ fontWeight: "100", marginTop: "2rem" }} to="/register">
           Create account!
         </Link>
       </form>

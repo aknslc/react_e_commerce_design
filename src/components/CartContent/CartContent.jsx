@@ -19,14 +19,14 @@ const CartContent = () => {
                                 (
                                     <div className={styles.emptyCartContainer} >
                                         <p>Cart is Empty</p>
-                                        <Link className='btn btn-success text-white my-5' to="/">Go Products</Link>
+                                        <Link className='btn btn-success text-white my-5' to="/products">Go Products</Link>
                                     </div>
                                 )
                                 :
                                 (
                                     <>
                                         {cart.map(product => (
-                                            <div key={product.id} className={styles.cartItems}>
+                                            <div key={product._id} className={styles.cartItems}>
                                                 <div className="d-flex align-items-center" style={{ width: "250px" }}>
                                                     <div>
                                                         <img src={product.image} alt="" />

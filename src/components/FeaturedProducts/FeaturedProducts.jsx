@@ -1,9 +1,13 @@
 import styles from './products.module.scss'
-import { featuredproducts } from '../../constants/index'
 import Product from '../Product/Product'
 import { Link } from 'react-router-dom';
-
+import useFetch from '../../hooks/useFetch'
 const FeaturedProducts = () => {
+    const {data,loading,error} = useFetch('/products');
+
+    const featuredData = data.filter(item => item.featured);
+
+    console.log(featuredData)
     return (
         <section className={styles.products}>
             <div className="container">
@@ -11,8 +15,8 @@ const FeaturedProducts = () => {
                     Featured
                 </div>
                 <div className="row">
-                    {featuredproducts.map((product) => (
-                        <div key={product.id} className="col-lg-3 col-md-6 col-sm-12">
+                    {featuredData.map((product) => (
+                        <div key={product._id} className="col-lg-3 col-md-6 col-sm-12">
                             <Product product={product} />
                         </div>
                     ))}

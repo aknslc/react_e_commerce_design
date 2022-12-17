@@ -17,7 +17,7 @@ const Product = ({ product }) => {
     const { addToCart } = useCart();
     const { addToFavorite, favorite } = useFavorite();
 
-    const checkFavorite = favorite.find(item => item.id === product.id);
+    const checkFavorite = favorite.find(item => item._id === product._id);
 
 
     // snackbar
@@ -36,11 +36,11 @@ const Product = ({ product }) => {
     return (
         <div className={styles.productCard}>
 
-            <Link to={`/products/${product.id}`} className={styles.productDetails}>
-                <img src={product.image} alt={product.title} />
+            <Link to={`/products/${product._id}`} className={styles.productDetails}>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt={product.title} />
 
                 <div className={styles.title}>
-                    {product.title.substring(0, 18)}
+                    {product.title}
                 </div>
                 <div className={styles.price}>
                     $ {product.price}

@@ -14,14 +14,16 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import { CartProvider } from './context/CartContext';
 import { FavoriteProvider } from './context/FavoriteContext';
-
+import { AuthProvider } from './context/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <FavoriteProvider>
         <CartProvider>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </CartProvider>
       </FavoriteProvider>
     </BrowserRouter>
