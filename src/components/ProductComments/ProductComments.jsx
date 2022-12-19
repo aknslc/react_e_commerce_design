@@ -1,21 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './productcomments.module.scss'
 import { RxAvatar } from 'react-icons/rx'
 import { useFormik } from 'formik';
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext'
+import useFetch from '../../hooks/useFetch'
+
 const ProductComments = () => {
-  const [comment, setComment] = useState({ sender: "", content: "" });
-  
+  const { id } = useParams();
+  const { user } = useAuth();
+  const { data, loading, error } = useFetch(`/comments/${id}`)
+
+
 
   const formik = useFormik({
     initialValues: {
-      comment: {
-        sender: '11',
-        content: '',
-      },
+      comment: '',
+      product_id: id,
+      //user_id: user._id
     },
-    onSubmit: values => {
-      setComment({ sender: values.comment.sender, content: values.comment.content })
-      console.log(comment)
+    onSubmit: async values => {
+      await axios.post(`/comments/${id}`, values)
     },
   });
   return (
@@ -26,10 +32,10 @@ const ProductComments = () => {
           <div className={styles.inputDiv}>
             <textarea
               id="comment"
-              name="comment.content"
+              name="comment"
               onChange={formik.handleChange}
               placeholder='Comment . . .'
-              value={formik.values.comment.content}
+              value={formik.values.comment}
             />
             <button type="submit">Comment</button>
           </div>
@@ -38,42 +44,24 @@ const ProductComments = () => {
 
         <h1>Comments</h1>
         <div className={styles.userComments}>
-          <div className={styles.commentsItem}>
-            <div className={styles.commentsContent}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo debitis est provident iusto facilis distinctio, esse harum? Ducimus et quam perspiciatis aspernatur ipsam cumque culpa.
-            </div>
-            <div className={styles.commentsAuthor}>
-              <div><RxAvatar size={20} /></div>
-              <div>aknselc</div>
-            </div>
-            <div className={styles.commentsDate}>
-              20/04/2020
-            </div>
-          </div>
-          <div className={styles.commentsItem}>
-            <div className={styles.commentsContent}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo debitis est provident iusto facilis distinctio, esse harum? Ducimus et quam perspiciatis aspernatur ipsam cumque culpa.
-            </div>
-            <div className={styles.commentsAuthor}>
-              <div><RxAvatar size={20} /></div>
-              <div>aknselc</div>
-            </div>
-            <div className={styles.commentsDate}>
-              20/04/2020
-            </div>
-          </div>
-          <div className={styles.commentsItem}>
-            <div className={styles.commentsContent}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo debitis est provident iusto facilis distinctio, esse harum? Ducimus et quam perspiciatis aspernatur ipsam cumque culpa.
-            </div>
-            <div className={styles.commentsAuthor}>
-              <div><RxAvatar size={20} /></div>
-              <div>aknselc</div>
-            </div>
-            <div className={styles.commentsDate}>
-              20/04/2020
-            </div>
-          </div>
+          {data.map((item) => {
+            return (
+              <div key={item._id} className={styles.commentsItem}>
+                <div className={styles.commentsContent}>
+                  {item.comment}
+                </div>
+                <div className={styles.commentsAuthor}>
+                  <div><RxAvatar size={20} /></div>
+                  <div>{item.user_id }</div>
+                </div>
+                <div className={styles.commentsDate}>
+                  {item.createdAt}
+                </div>
+              </div>
+            )
+          }
+          )}
+
 
           <div className='text-center'>
             <button className='btn btn-outline-secondary btn-lg'>Load More Comments</button>

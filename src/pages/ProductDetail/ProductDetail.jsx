@@ -11,16 +11,16 @@ import ProductComments from '../../components/ProductComments/ProductComments'
 const ProductDetail = () => {
   
   const { id } = useParams()
-  const {data, loading} = useFetch(`/products/${id}`);
+  const {data} = useFetch(`/products/${id}`);
 
-  const product = data;
+  
 
   return (
     <>
       <Header />
       <Navbar />
-      <ProductDetailContent product={product} />
-      <ProductComments/>
+      <ProductDetailContent product={data} />
+      <ProductComments product={data}/>
       <FeaturedProducts/>
       <Footer/>
  

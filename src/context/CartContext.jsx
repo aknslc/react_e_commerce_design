@@ -6,16 +6,17 @@ import { confirmAlert } from 'react-confirm-alert';
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [total, setTotal] = useState(0);
 
+    
 
     // confirm alert func
     const confirmAlertFunc = (product) => {
-        
+
         confirmAlert({
-            
-            customUI: ({onClose}) => {
+
+            customUI: ({ onClose }) => {
                 return (
                     <div className='confirm-custom-ui'>
                         <h1>Are you sure?</h1>
@@ -47,6 +48,7 @@ const CartProvider = ({ children }) => {
                 amount: 1,
                 title: product.title,
                 price: product.price,
+                images: product.images
             }]);
             cb();
             setTotal((prev) => prev + product.price)
@@ -57,7 +59,6 @@ const CartProvider = ({ children }) => {
         const checkCart = cart.find(item => item._id === product._id);
         setCart([...cart.filter(item => item._id !== product._id)])
         setTotal(prev => prev -= (checkCart.price * checkCart.amount))
-
     }
 
     const increase = (product) => {
@@ -76,8 +77,13 @@ const CartProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log(cart);
-    }, [cart])
+        localStorage.setItem('cart', JSON.stringify(cart))
+
+        const cartTotal = cart
+        .reduce((a, b) => a + b.price * b.amount, 0)
+        .toFixed(2);
+        setTotal(cartTotal)
+    }, [cart, total])
 
     const values = {
         cart,

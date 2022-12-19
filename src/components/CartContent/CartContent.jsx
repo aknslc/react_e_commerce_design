@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 const CartContent = () => {
     const { cart, total, increase, decrease, confirmAlertFunc } = useCart();
 
+    
+    
     return (
         <div className={styles.cartContent}>
 
@@ -29,7 +31,7 @@ const CartContent = () => {
                                             <div key={product._id} className={styles.cartItems}>
                                                 <div className="d-flex align-items-center" style={{ width: "250px" }}>
                                                     <div>
-                                                        <img src={product.image} alt="" />
+                                                        <img src={product.images} alt={product.title} />
                                                     </div>
 
                                                     <div className={styles.productInfo}>

@@ -26,14 +26,13 @@ const ProductDetailContent = ({ product }) => {
 
 
 
-
     return (
         <div className={styles.productDetailContainer}>
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6 col-md-12">
                         <div className={styles.imageContainer}>
-                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="" />
+                            <img src={product.images} alt="" />
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-12">

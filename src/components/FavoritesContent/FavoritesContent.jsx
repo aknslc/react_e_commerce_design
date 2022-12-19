@@ -2,6 +2,7 @@ import styles from './favoritescontent.module.scss'
 import FavoritesCard from '../FavoritesCard/FavoritesCard'
 import { useFavorite } from '../../context/FavoriteContext'
 const FavoritesContent = () => {
+
     const { favorite } = useFavorite();
     return (
         <div className={styles.favoritesContainer}>
@@ -10,7 +11,7 @@ const FavoritesContent = () => {
                 <div className={styles.favoritesItems}>
                     <div className="row">
                         {favorite.map(product => (
-                            <div key={product.id} className="col-lg-3">
+                            <div key={product._id} className="col-lg-3 col-md-6 col-sm-12">
                                 <FavoritesCard product={product} />
                             </div>
                         ))}

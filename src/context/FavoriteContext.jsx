@@ -7,21 +7,21 @@ const FavoriteProvider = ({ children }) => {
     const [favorite, setFavorite] = useState([]);
 
     const addToFavorite = (product) => {
-        const checkFavorite = favorite.find(item => item.id === product.id);
+        const checkFavorite = favorite.find(item => item._id === product._id);
         if (checkFavorite) {
             removeItem(product);
         } else {
             setFavorite([...favorite, {
-                id: product.id,
+                _id: product._id,
                 title: product.title,
                 price: product.price,
-                image: product.image
+                images: product.images
             }])
         }
     }
     
     const removeItem = (product) => {     
-        setFavorite([...favorite.filter(item => item.id !== product.id)])
+        setFavorite([...favorite.filter(item => item._id !== product._id)])
     }
 
 

@@ -8,12 +8,11 @@ const FavoritesCard = ({ product }) => {
     const checkFavorite = favorite.find(item => item.id === product.id);
 
 
-
     return (
         <div className={styles.favoritesItem}>
-            <Link to={`/products/${product.id}`}>
-                <img src={product.image} className="w-full" alt="" />
-                <h2>{product.title.substring(0, 10)}</h2>
+            <Link to={`/products/${product._id}`}>
+                <img src={product.images} className="w-full" alt={product.title} />
+                <h2>{product.title}</h2>
                 <p>{product.description}</p>
                 <p>$ {product.price}</p>
             </Link>

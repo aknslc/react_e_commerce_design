@@ -7,7 +7,6 @@ const FeaturedProducts = () => {
 
     const featuredData = data.filter(item => item.featured);
 
-    console.log(featuredData)
     return (
         <section className={styles.products}>
             <div className="container">
