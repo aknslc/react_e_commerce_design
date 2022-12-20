@@ -2,22 +2,27 @@
 
 
 .productComments {
+    width: 70% !important;
+    margin: 5rem auto;
 
+    border: 1px solid mixin.$light-gray;
+    padding: 2rem;
 
     .commentsArea {
-        margin: 10rem 0;
-
-
+        margin-bottom: 5rem;
         .inputDiv {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
 
             textarea {
-                border: 1px solid mixin.$light-gray;
+                border: none;
+                border-bottom: 1px solid mixin.$light-gray;
                 width: 100%;
-                border-radius: .5rem;
-                padding: 2rem;
+                padding: 1rem;
                 outline: none;
-                font-size: 1.7rem;
+                font-size: 1.5rem;
                 display: block;
             }
 
@@ -37,12 +42,16 @@
 
 
     .userComments {
+        height: 300px;
+        overflow: auto;
+        margin-top: 2rem;
 
         .commentsItem {
             position: relative;
             border: 1px solid mixin.$light-gray;
             padding: 2rem;
-            margin: 5rem 0;
+            margin-bottom: 1rem;
+
 
             .commentsContent {
                 font-size: 1.5rem;

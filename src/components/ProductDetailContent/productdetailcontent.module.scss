@@ -24,8 +24,10 @@ $breakpoints: (
     padding: 5rem 0 !important;
     margin: 5rem 0;
 
+
     .imageContainer {
         width: 100%;
+
         img {
             margin-bottom: 3rem;
             object-fit: contain;
@@ -45,8 +47,10 @@ $breakpoints: (
         gap: 15px;
         .title {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 500;
             text-align: start;
+            color: gray;
+
             @include respond-to('medium') {
                 text-align: center;
             }
@@ -58,6 +62,7 @@ $breakpoints: (
             text-align: start;
             margin: 2rem 0;
             line-height: 1.7;
+
             @include respond-to('medium') {
                 text-align: center;
             }
@@ -66,45 +71,48 @@ $breakpoints: (
         .price {
             text-transform: uppercase;
             font-weight: 600;
+
             @include respond-to('medium') {
                 text-align: center;
             }
         }
 
         .addToCart {
-            border: 1px solid rgb(217, 216, 216);
-            width: 100%;
-            padding: 1rem 2rem;
-            font-size: 2rem;
-            margin: 4rem 0;
-            background-color: mixin.$white;
-            color: mixin.$primary-color;
+            border: 1px solid rgb(217, 216, 216
+            );
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        margin: 4rem 0;
+        background-color: mixin.$white;
+        color: mixin.$primary-color;
+    }
+
+    .buttonsArea {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 2rem 0;
+
+        @include respond-to('medium') {
+            justify-content: center;
         }
 
-        .buttonsArea{
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin: 2rem 0;
-            @include respond-to('medium') {
-                justify-content: center;
-            }
+        span {
+            font-size: 2rem;
+            margin: 0 2rem;
+            padding: 0 1.5rem;
+            border: 1px solid mixin.$primary-color;
 
-            span{
-                font-size: 2rem;
-                margin: 0 2rem;
-                padding: 0 1.5rem;
-                border: 1px solid mixin.$primary-color;
-                
-            }
+        }
 
-            .increaseDecrease{
-                border: none;
-                background-color: transparent;
-                font-size: 3rem;
-                padding: 0;
-            }
+        .increaseDecrease {
+            border: none;
+            background-color: transparent;
+            font-size: 3rem;
+            padding: 0;
         }
     }
+}
 
 }

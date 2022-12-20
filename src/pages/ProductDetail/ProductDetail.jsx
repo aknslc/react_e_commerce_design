@@ -20,8 +20,8 @@ const ProductDetail = () => {
       <Header />
       <Navbar />
       <ProductDetailContent product={data} />
-      <ProductComments product={data}/>
       <FeaturedProducts/>
+      <ProductComments product={data}/>
       <Footer/>
  
     </>
