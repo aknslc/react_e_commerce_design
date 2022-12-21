@@ -10,7 +10,8 @@ import "slick-carousel/slick/slick-theme.css";
 // bootstrap
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import confirm css
 
 import { CartProvider } from './context/CartContext';
 import { FavoriteProvider } from './context/FavoriteContext';
