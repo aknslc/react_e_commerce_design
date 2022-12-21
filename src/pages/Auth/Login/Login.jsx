@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext'
 import axios from 'axios';
 const Login = () => {
-  const { user, setUser } = useAuth()
+  const { setUser } = useAuth()
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate();
   const formik = useFormik({
@@ -16,7 +16,6 @@ const Login = () => {
     onSubmit: async values => {
       try {
         const res = await axios.post("/auth/login", values);
-        // localStorage.setItem('user', JSON.stringify(res.data))
         setUser(res.data)
         navigate('/')
       } catch (err) {

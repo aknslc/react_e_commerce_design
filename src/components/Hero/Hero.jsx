@@ -1,5 +1,5 @@
 import styles from './hero.module.scss'
-import heroBg  from '../../assets/hero-bg2.webp'
+import heroBg  from '../../assets/promo4.webp'
 const Hero = () => {
     return (
         <section className={styles.hero}>

@@ -1,5 +1,5 @@
 import styles from './header.module.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { HiOutlineUser } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
@@ -60,7 +60,7 @@ const Header = () => {
                         </div>
                         <div className={styles.accountItem}>
                             <Link to="/cart">
-                                <Badge badgeContent={cart.length} color="error" max={10} >
+                                <Badge badgeContent={cart.length} color="primary" max={10} >
                                     <AiOutlineShoppingCart size={18} />
                                 </Badge>
                             </Link>

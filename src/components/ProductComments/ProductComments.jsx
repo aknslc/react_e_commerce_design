@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './productcomments.module.scss'
 import { RxAvatar } from 'react-icons/rx'
 import { useFormik } from 'formik';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
-import { useAuth } from '../../context/AuthContext'
 import useFetch from '../../hooks/useFetch'
 import { AiTwotoneStar } from 'react-icons/ai'
+import { IoIosArrowDown } from 'react-icons/io'
+import { useAuth } from '../../context/AuthContext';
 
 const ProductComments = () => {
   const { id } = useParams();
-  const { user } = useAuth();
-  const { data, loading, error } = useFetch(`/comments/${id}`)
+  const { data } = useFetch(`/comments/${id}`)
+  const { user } = useAuth()
 
-
+  const navigate = useNavigate();
   // comment load more
   const [next, setNext] = useState(0);
   const [commentPerLoad, setCommentPerLoad] = useState(2)
@@ -29,11 +30,15 @@ const ProductComments = () => {
     initialValues: {
       comment: '',
       product_id: id,
-      //user_id: user._id
     },
     onSubmit: async values => {
-      await axios.post(`/comments/${id}`, values)
-      window.location.reload();
+      if (user) {
+        await axios.post(`/comments/${id}`, values)
+        window.location.reload();
+      }else{
+        alert("please login")
+        navigate('/login')
+      }
     },
   });
   return (
@@ -59,30 +64,30 @@ const ProductComments = () => {
 
         <div className={`${styles.userComments}`}>
           {commentsArray.map((item) => (
-              <div key={item._id} className={styles.commentsItem}>
-                <div className={styles.commentsContent}>
-                  {item.comment}
-                </div>
-                <div className={styles.commentsAuthor}>
-                  <div><RxAvatar size={20} /></div>
-                  <div>{item.user_id}</div>
-                </div>
-                <div className={styles.commentsDate}>
-                  {item.createdAt}
-                </div>
-                <div className="stars">
-                  <AiTwotoneStar color='orange' size={15} />
-                  <AiTwotoneStar color='orange' size={15} />
-                  <AiTwotoneStar color='orange' size={15} />
-                  <AiTwotoneStar color='orange' size={15} />
-                  <AiTwotoneStar color='orange' size={15} />
-                </div>
+            <div key={item._id} className={styles.commentsItem}>
+              <div className={styles.commentsContent}>
+                {item.comment}
               </div>
-            )
+              <div className={styles.commentsAuthor}>
+                <div><RxAvatar size={20} /></div>
+                <div>{item.user_id}</div>
+              </div>
+              <div className={styles.commentsDate}>
+                {item.createdAt}
+              </div>
+              <div className="stars">
+                <AiTwotoneStar color='orange' size={15} />
+                <AiTwotoneStar color='orange' size={15} />
+                <AiTwotoneStar color='orange' size={15} />
+                <AiTwotoneStar color='orange' size={15} />
+                <AiTwotoneStar color='orange' size={15} />
+              </div>
+            </div>
+          )
           )}
 
-          <div className="text-center">
-            <button disabled={commentsArray.length === data.length} onClick={handleToShowMore} className='btn btn-outline-secondary btn-lg w-50'>{commentsArray.length === 0 ? 'Show Comments' : 'Load More'}</button>
+          <div className="text-center d-flex justify-content-center">
+            <button disabled={commentsArray.length === data.length} onClick={handleToShowMore} className='btn btn-outline-secondary btn-lg w-50 d-flex align-items-center justify-content-center '>{commentsArray.length === 0 ? 'Show Comments' : 'Load More'} <IoIosArrowDown size={14} /></button>
           </div>
         </div>
 

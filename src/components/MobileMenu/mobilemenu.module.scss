@@ -64,7 +64,7 @@ $breakpoints: (
 
     @include respond-to('medium') {
         display: block;
-        color: mixin.$secondary-color;
+        color: mixin.$primary-color;
     }
 
 }

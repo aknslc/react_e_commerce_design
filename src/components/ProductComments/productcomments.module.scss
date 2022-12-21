@@ -1,5 +1,23 @@
 @use "../../index.scss" as mixin;
 
+// breakpoints for responsive
+$breakpoints: (
+    'xsmall': 576px,
+    'small': 767px,
+    'medium': 992px,
+    'large': 1200px) !default;
+
+@mixin respond-to($breakpoint) {
+
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Prints a media query based on the value
+        @media (max-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+}
 
 .productComments {
     width: 70% !important;
@@ -8,8 +26,16 @@
     border: 1px solid mixin.$light-gray;
     padding: 2rem;
 
+
+    @include respond-to('medium') {
+        width: 100% !important;
+    }
+
+
+
     .commentsArea {
         margin-bottom: 5rem;
+
         .inputDiv {
             position: relative;
             display: flex;
@@ -18,10 +44,11 @@
 
             textarea {
                 border: none;
-                border-bottom: 1px solid mixin.$light-gray;
+                border: 1px solid mixin.$light-gray;
                 width: 100%;
                 padding: 1rem;
                 outline: none;
+                border-radius: .5rem;
                 font-size: 1.5rem;
                 display: block;
             }

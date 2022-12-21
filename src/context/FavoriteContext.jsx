@@ -5,7 +5,6 @@ const FavoriteContext = createContext();
 
 const FavoriteProvider = ({ children }) => {
     const [favorite, setFavorite] = useState([]);
-
     const addToFavorite = (product) => {
         const checkFavorite = favorite.find(item => item._id === product._id);
         if (checkFavorite) {
@@ -24,9 +23,8 @@ const FavoriteProvider = ({ children }) => {
         setFavorite([...favorite.filter(item => item._id !== product._id)])
     }
 
-
     useEffect(() => {
-        console.log(favorite);
+        console.log(favorite)
     }, [favorite])
 
     const values = {
